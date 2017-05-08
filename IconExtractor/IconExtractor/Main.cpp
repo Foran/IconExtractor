@@ -1,6 +1,33 @@
 #include <Windows.h>
+#include "resource.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+HWND hWnd;
+LRESULT CALLBACK DlgProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+
+INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+	LPSTR lpCmdLine, int nCmdShow)
 {
-	return 0;
+	DialogBox(hInstance, MAKEINTRESOURCE(IDD_MAIN), hWnd, reinterpret_cast<DLGPROC>(DlgProc));
+
+	return FALSE;
+}
+
+LRESULT CALLBACK DlgProc(HWND hWndDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (Msg)
+	{
+	case WM_INITDIALOG:
+		return TRUE;
+
+	case WM_COMMAND:
+		switch (wParam)
+		{
+		case IDOK:
+			EndDialog(hWndDlg, 0);
+			return TRUE;
+		}
+		break;
+	}
+
+	return FALSE;
 }
