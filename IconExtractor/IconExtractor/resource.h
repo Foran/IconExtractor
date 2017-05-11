@@ -3,9 +3,10 @@
 // Used by IconExtractor.rc
 //
 #define IDD_MAIN                        101
-#define IDC_EDIT1                       1001
 #define IDC_FILENAME                    1001
 #define IDC_BROWSE                      1002
+#define IDC_FILENAME2                   1003
+#define IDC_BROWSE2                     1004
 
 // Next default values for new objects
 // 
